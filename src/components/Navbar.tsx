@@ -15,7 +15,7 @@ export default function Navbar() {
   }, []);
 
   
-  return (
+    return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -24,59 +24,42 @@ export default function Navbar() {
         isScrolled ? "py-0.5" : "py-1"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18">
         {/* Logo Area */}
-<a href="/" className="flex items-center gap-2 z-50 relative">
-  <img
-    src="/diagnuvo.png"
-    alt="DIAGNUVO Logo"
-    className="h-12 w-auto object-contain brightness-125 contrast-110"
-  />
-</a>
+        <a href="/" className="flex items-center gap-2 z-50 relative group">
+          <img
+            src="/diagnuvo.png"
+            alt="DIAGNUVO Logo"
+            className="h-10 w-auto md:h-12 object-contain"
+            style={{ filter: "brightness(1.2) contrast(1.1)" }}
+          />
         </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="#platform"
-            className={`text-sm font-bold transition-colors ${isScrolled ? 'text-slate-gray hover:text-deep-navy' : 'text-bright-white hover:text-bright-white/80'}`}
-          >
-            Platform
-          </a>
-          <a
-            href="#features"
-            className={`text-sm font-bold transition-colors ${isScrolled ? 'text-slate-gray hover:text-deep-navy' : 'text-bright-white hover:text-bright-white/80'}`}
-          >
-            Features
-          </a>
-          <a
-            href="#security"
-            className={`text-sm font-bold transition-colors ${isScrolled ? 'text-slate-gray hover:text-deep-navy' : 'text-bright-white hover:text-bright-white/80'}`}
-          >
-            Security
-          </a>
-          <a
-            href="#about"
-            className={`text-sm font-bold transition-colors ${isScrolled ? 'text-slate-gray hover:text-deep-navy' : 'text-bright-white hover:text-bright-white/80'}`}
-          >
-            About
-          </a>
+          <a href="#platform" className="text-white/80 hover:text-white transition">Platform</a>
+          <a href="#features" className="text-white/80 hover:text-white transition">Features</a>
+          <a href="#security" className="text-white/80 hover:text-white transition">Security</a>
+          <a href="#about" className="text-white/80 hover:text-white transition">About</a>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all ${isScrolled ? 'bg-medical-blue/10 border border-medical-blue/20 text-medical-blue' : 'bg-bright-white/10 border border-bright-white/20 text-bright-white backdrop-blur-md'}`}>
-            <span className={`w-2 h-2 rounded-full animate-pulse ${isScrolled ? 'bg-medical-blue' : 'bg-medical-blue-light'}`}></span>
-            Next-Gen ED Intelligence
-          </div>
-        </div>
+        {/* Right CTA + Mobile Toggle */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white hover:bg-white/15 transition"
+          >
+            NEXT-GEN ED INTELLIGENCE
+          </a>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-deep-navy' : 'text-bright-white'}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <button
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg bg-white/10 border border-white/15 text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -84,44 +67,16 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-transparent backdrop-blur-xl border-b border-white/10 shadow-lg py-4 px-6 flex flex-col gap-4"
+          transition={{ duration: 0.2 }}
+          className="md:hidden px-6 pb-4"
         >
-          <a
-            href="#platform"
-            className={`text-base font-bold py-2 border-b ${isScrolled ? 'text-deep-navy border-soft-gray' : 'text-bright-white border-white/10'}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Platform
-          </a>
-          <a
-            href="#features"
-            className={`text-base font-bold py-2 border-b ${isScrolled ? 'text-deep-navy border-soft-gray' : 'text-bright-white border-white/10'}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Features
-          </a>
-          <a
-            href="#security"
-            className={`text-base font-bold py-2 border-b ${isScrolled ? 'text-deep-navy border-soft-gray' : 'text-bright-white border-white/10'}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Security
-          </a>
-          <a
-            href="#about"
-            className={`text-base font-bold py-2 border-b ${isScrolled ? 'text-deep-navy border-soft-gray' : 'text-bright-white border-white/10'}`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            About
-          </a>
-          <div className="flex flex-col gap-3 mt-2">
-            <div className={`inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-sm font-semibold tracking-wide uppercase ${isScrolled ? 'bg-medical-blue/10 border border-medical-blue/20 text-medical-blue' : 'bg-bright-white/10 border border-bright-white/20 text-bright-white backdrop-blur-md'}`}>
-              <span className={`w-2 h-2 rounded-full animate-pulse ${isScrolled ? 'bg-medical-blue' : 'bg-medical-blue-light'}`}></span>
-              Next-Gen ED Intelligence
-            </div>
+          <div className="flex flex-col gap-3 pt-3 border-t border-white/10">
+            <a href="#platform" className="text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Platform</a>
+            <a href="#features" className="text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+            <a href="#security" className="text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Security</a>
+            <a href="#about" className="text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>About</a>
           </div>
         </motion.div>
       )}
     </motion.header>
   );
-}
