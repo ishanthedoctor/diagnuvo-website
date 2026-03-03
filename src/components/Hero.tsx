@@ -1,21 +1,16 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+// import { motion, useScroll, useTransform } from "motion/react";
 import { PlayCircle, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
+      
+       <div className="absolute inset-0 w-full h-full">
           <video
             autoPlay
             muted
@@ -25,7 +20,7 @@ export default function Hero() {
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
-        </motion.div>
+        </div>
         {/* Overlays for readability and smooth transition to the next section */}
         {/* Top gradient for Navbar readability */}
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-deep-navy/80 to-transparent pointer-events-none"></div>
