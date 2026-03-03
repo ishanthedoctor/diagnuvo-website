@@ -25,9 +25,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-10">
         {/* Logo Area */}
-        <a href="/" className="flex items-center gap-2 z-50 relative group -ml-4 md:-ml-8">
+        <a href="/" className="flex items-center gap-2 z-50 relative group ">
           <img
-            src="/diagnuvo-logo.png"
+            src="/diagnuvo-logo.png?v=2"
             alt="D I A G N U V O Logo"
             style={{
               height: "28px",
@@ -35,7 +35,7 @@ export default function Navbar() {
               objectFit: "contain",
               display: "block",
               filter: "brightness(1.2) contrast(1.1)",
-              letterSpacing: "0.2em"
+              
             }}
           />
         </a>
