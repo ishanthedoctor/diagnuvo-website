@@ -28,7 +28,7 @@ export default function Navbar() {
         {/* Logo Area */}
         <a href="/" className="flex items-center gap-2 z-50 relative group ">
           <img
-            src="/diagnuvo-logo.png?v=2"
+            src="/diagnuvo.png"
             alt="D I A G N U V O Logo"
             style={{
               height: "28px",
