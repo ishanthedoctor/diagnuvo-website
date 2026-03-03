@@ -19,8 +19,18 @@ export default function Hero() {
     };
 
     tryPlay();
-  }, []);
-
+  className="absolute inset-0 w-full h-full object-cover object-center"
+<video
+  ref={videoRef}
+  className="absolute inset-0 w-full h-full object-cover object-center"
+  style={{ transform: "translateZ(0)" }}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  controls
+src="/hero-video.mp4?v=3"
   return (
     <section className="relative min-h-screen overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32">
       {/* Video background */}
