@@ -20,7 +20,7 @@ export default function Hero() {
 
     tryPlay();
   return (
-    <section className="relative min-h-screen overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32">
+    <section className="relative min-h-screen overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32">
       {/* Video background */}
       <div className="absolute inset-0 z-0">
         <video
