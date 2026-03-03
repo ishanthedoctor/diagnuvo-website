@@ -73,7 +73,7 @@ export default function Hero() {
             onPause={() => setIsPlaying(false)}
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video-v2.mp4" type="video/mp4" />
           </video>
         </motion.div>
         {/* Overlays for readability and smooth transition to the next section */}
