@@ -20,17 +20,17 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent backdrop-blur-xl border-b border-white/10 ${
-        isScrolled ? "py-3" : "py-5"
+        isScrolled ? "py-2" : "py-3"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-12">
         {/* Logo Area */}
         <a href="/" className="flex items-center gap-2 z-50 relative group -ml-4 md:-ml-8">
           <img
             src="/diagnuvo-logo.png"
             alt="D I A G N U V O Logo"
             style={{
-              height: "130px",
+              height: "28px",
               width: "auto",
               objectFit: "contain",
               display: "block",
