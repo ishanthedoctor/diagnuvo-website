@@ -24,19 +24,13 @@ export default function Navbar() {
         isScrolled ? "py-0.5" : "py-1"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18">
         {/* Logo Area */}
         <a href="/" className="flex items-center gap-2 z-50 relative group ">
           <img
             src="/diagnuvo.png"
             alt="D I A G N U V O Logo"
-            style={{
-              height: "28px",
-              width: "auto",
-              objectFit: "contain",
-              display: "block",
-              filter: "brightness(1.2) contrast(1.1)",
-              
+    className="h-12 w-auto object-contain brightness-125 contrast-110"        
             }}
           />
         </a>
