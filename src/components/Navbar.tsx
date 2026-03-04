@@ -40,7 +40,7 @@ export default function Navbar() {
   isScrolled ? "py-0.5" : "py-1"
 }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 z-50 relative">
           <img
