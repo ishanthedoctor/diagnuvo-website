@@ -744,14 +744,7 @@ function AuditLogCard({ active }: { active: boolean }) {
         </motion.div>
       </div>
       
-      <div className="relative pl-4 space-y-4 py-2 z-10">
-        {/* Vertical line */}
-        <motion.div 
-          className="absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-cyan-500/50 via-cyan-500/20 to-transparent"
-          initial={{ height: "0%" }}
-          animate={{ height: active ? "100%" : "0%" }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-        />
+      <div className="relative pl-0 space-y-4 py-2 z-10">
         
         {events.map((ev, i) => {
           return (
