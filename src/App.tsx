@@ -20,7 +20,7 @@ import FooterCTA from './components/FooterCTA';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-bright-white text-deep-navy font-sans selection:bg-medical-blue selection:text-bright-white">
+   <div className="min-h-screen bg-[#020617] text-white font-sans">
       <Navbar />
       <main>
         <Hero />
