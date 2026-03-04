@@ -42,7 +42,7 @@ export default function About() {
                 outcomes, the nuance of the individual can be lost in the noise
                 of the system.
               </p>
-              <p className="text-deep-navy font-semibold border-l-4 border-medical-blue pl-6 py-2">
+              <p className="text-deep-navy font-semibold pl-6 py-2">
                 Our technology doesn't replace the physician's intuition; it
                 amplifies it. We build tools that cut through the chaos, giving
                 doctors the clarity and time they need to treat the multitudes
