@@ -261,9 +261,6 @@ export default function PlatformPipeline() {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="mt-6 text-xs text-white/45">
-                  Tip: On mobile, the floating card appears over the panel by design.
-                </div>
               </div>
             </div>
 
