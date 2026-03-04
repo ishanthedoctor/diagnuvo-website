@@ -485,7 +485,7 @@ export default function FeaturesBento() {
                 delay: index * 0.15,
                 ease: "easeOut",
               }}
-              className={`group relative overflow-hidden bg-white/[0.02] rounded-2xl border border-white/10 p-6 shadow-lg hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-end min-h-[220px] ${feature.colSpan} ${feature.rowSpan}`}
+              className={'group relative overflow-hidden bg-white/0.02 rounded-2xl p-6 shadow-lg shadow-[0_0_0_1px_rgba(255,255,255,0.06)] hover:-translate-y-1 ...'}
             >
               {/* 1) Soft moving scanline overlay */}
               <motion.div 
