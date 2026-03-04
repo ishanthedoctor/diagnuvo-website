@@ -12,8 +12,14 @@ export default function Solution() {
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative">
         {/* icon container (empty for now to avoid asset errors) */}
         <div className="flex justify-center mb-10">
-          <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md" />
-        </div>
+          <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+  <img
+    src="/diagnuvo.png"
+    alt="Diagnuvo Shield"
+    className="w-8 h-8 object-contain"
+  />
+</div>
+
 
         <h2 className="text-4xl md:text-5xl font-bold text-center text-white tracking-tight">
           The Smart Emergency Care Platform
