@@ -1027,7 +1027,7 @@ export default function WorkflowStory() {
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
                   {/* Node */}
-                  <div className="absolute left-1/2 -translate-x-1/2 z-30">
+                  <div className="absolute left-6  z-30">
                     <motion.div
                       className="h-4 w-4 rounded-full border border-cyan-200/60 bg-[#020617]"
                       animate={{
