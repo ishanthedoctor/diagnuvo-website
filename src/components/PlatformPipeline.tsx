@@ -146,14 +146,7 @@ export default function PlatformPipeline() {
                 <div className="absolute left-[34px] top-8 bottom-8 w-[2px] bg-white/10" />
 
                 {/* Progress line */}
-                <motion.div
-                  className="absolute left-[34px] top-8 w-[2px] bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
-                  animate={{
-                    height: `${(activeStep / (pipelineSteps.length - 1)) * 100}%`,
-                  }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  style={{ transformOrigin: "top" }}
-                />
+                
 
                 {/* Steps list */}
                 <div className="space-y-6">
