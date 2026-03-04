@@ -1004,25 +1004,7 @@ export default function WorkflowStory() {
 
         {/* Content */}
         <div className="relative z-20 mx-auto h-full max-w-6xl px-6 md:px-10">
-          {/* Timeline */}
-          <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2">
-            {/* dotted base */}
-            <div className="absolute inset-0 opacity-40"
-                 style={{
-                   backgroundImage:
-                     "repeating-linear-gradient(to bottom, rgba(34,211,238,0.55) 0 6px, transparent 6px 16px)",
-                 }}
-            />
-            {/* progress fill */}
-            <motion.div
-              className="absolute left-0 top-0 w-[2px] bg-cyan-300/70"
-              style={{
-                height: progressHeight,
-                boxShadow: "0 0 18px rgba(34,211,238,0.35)",
-              }}
-            />
-          </div>
-
+        
           {/* Steps layout */}
           <div className="relative h-full w-full flex items-center justify-center">
             {steps.map((s, i) => {
