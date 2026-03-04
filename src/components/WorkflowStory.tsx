@@ -708,9 +708,10 @@ function AuditLogCard({ active }: { active: boolean }) {
         />
       )}
 
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:12px_12px] pointer-events-none opacity-50" />
 
+
+
+      
       <div className="relative z-10 flex items-center justify-between pb-4 mb-4">
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20">
