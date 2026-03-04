@@ -76,10 +76,10 @@ export default function PlatformPipeline() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="relative h-[600px] flex items-center justify-center">
+        <div className="relative h-[760px] flex items-center justify-center">
           
           {/* Vertical Pipeline */}
-          <div className="relative w-full max-w-md">
+          <<div className="relative w-full max-w-xl">
             
             {/* Glowing vertical line background */}
             <div className="absolute left-[27px] top-6 bottom-6 w-0.5 bg-white/10" />
@@ -91,7 +91,7 @@ export default function PlatformPipeline() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
             />
 
-            <div className="flex flex-col justify-between h-[500px] relative z-10">
+            <div className="flex flex-col justify-between h-[640px] relative z-10">
               {pipelineSteps.map((step, index) => {
                 const isActive = index === activeStep;
                 const isPast = index <= activeStep;
@@ -99,14 +99,14 @@ export default function PlatformPipeline() {
                 return (
                   <div key={step.id} className="relative flex items-center gap-6">
                     {/* Icon / Dot */}
-                    <div className={`relative flex items-center justify-center w-14 h-14 rounded-full border-2 transition-all duration-500 bg-[#020617] ${
+                    <div className={`relative flex items-center justify-center w-16 h-16 rounded-full border-2 transition-all duration-500 bg-[#020617] ${
                       isActive 
                         ? 'border-cyan-400 text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.5)] scale-110' 
                         : isPast 
                           ? 'border-cyan-400/50 text-cyan-400/50' 
                           : 'border-white/10 text-white/30'
                     }`}>
-                      <step.icon size={24} />
+                      <step.icon size={28} />
                       {isActive && (
                         <motion.div 
                           className="absolute inset-0 rounded-full border border-cyan-400"
