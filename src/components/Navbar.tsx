@@ -46,7 +46,7 @@ export default function Navbar() {
           <img
             src="/diagnuvo.png"
             alt="Diagnuvo Logo"
-            className="h-30 md:h-32 w-auto object-contain"
+            className="h-36 md:h-38 w-auto object-contain"
           />
         </a>
 
