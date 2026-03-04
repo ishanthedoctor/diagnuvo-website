@@ -1,5 +1,5 @@
 import React from "react";
-
+import { ShieldCheck } from "lucide-react";
 export default function Solution() {
   return (
     <section className="py-28 relative overflow-hidden bg-gradient-to-b from-[#071625] via-[#0d2743] to-[#08121f]">
@@ -13,11 +13,7 @@ export default function Solution() {
         {/* shield icon */}
         <div className="flex justify-center mb-10">
           <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-            <img
-              src="/diagnuvo.png"
-              alt="Diagnuvo Shield"
-              className="w-8 h-8 object-contain"
-            />
+            <ShieldCheck className="w-8 h-8 text-white/80" />
           </div>
         </div>
 
