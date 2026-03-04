@@ -24,9 +24,9 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <PlatformTour />
-        <PlatformPipeline />
-        <Problem />
+<Problem />
+<PlatformTour />
+<PlatformPipeline />
         <Solution />
         <WorkflowStory />
         <ProductDemo />
