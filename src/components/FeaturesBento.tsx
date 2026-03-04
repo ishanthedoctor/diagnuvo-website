@@ -240,7 +240,7 @@ function AuditVisual() {
 
   return (
     <div className="absolute top-5 right-5 flex flex-col items-end gap-2 pointer-events-none">
-      <div className="relative pr-3 border-r border-white/10 space-y-2">
+      <div className="relative pr-3 space-y-2">
         {events.map((ev, i) => (
           <AnimatePresence key={ev.text}>
             {step > i && (
