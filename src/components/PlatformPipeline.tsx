@@ -143,8 +143,7 @@ export default function PlatformPipeline() {
               {/* Inner padding */}
               <div className="relative p-7">
                 {/* Vertical line */}
-                <div className="absolute left-[34px] top-8 bottom-8 w-[2px] bg-white/10" />
-
+                
                 {/* Progress line */}
                 
 
