@@ -67,7 +67,7 @@ export default function PlatformPipeline() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % pipelineSteps.length);
-    }, 1600); // slower = cleaner
+    }, 3200); // slower = cleaner
     return () => clearInterval(interval);
   }, [pipelineSteps.length]);
 
