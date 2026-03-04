@@ -457,8 +457,7 @@ export default function FeaturesBento() {
   id="features"
   className="py-24 md:py-32 bg-gradient-to-b from-[#061225] to-[#040A14] relative overflow-hidden"
 >
-      {/* Subtle Grid Overlay */}
-      
+     
       {/* Ambient Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 
