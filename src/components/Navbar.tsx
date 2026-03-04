@@ -6,6 +6,7 @@ type NavLink = { name: string; href: string };
 
 const navLinks: NavLink[] = [
   { name: "Platform", href: "#platform" },
+  
   { name: "Features", href: "#features" },
   { name: "Security", href: "#security" },
   { name: "About", href: "#about" },
