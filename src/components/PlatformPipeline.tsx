@@ -1,347 +1,304 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Activity,
-  ScanLine,
-  Stethoscope,
+  Scan,
   BrainCircuit,
+  Stethoscope,
   ShieldCheck,
 } from "lucide-react";
 
-type PipelineStep = {
+type Step = {
   id: string;
-  label: string;
+  step: string;
   title: string;
-  subtitle: string;
-  icon: React.ElementType;
-};
-
-type FloatingCard = {
-  id: string;
-  text: string;
-  top: string;
-  left: string;
-  bg: string;
-  border: string;
-  color: string;
-};
-
-const pipelineSteps: PipelineStep[] = [
-  {
-    id: "step-01",
-    label: "STEP 01",
-    title: "Patient Arrival & Smart Triage",
-    subtitle: "Signal detection and priority triage in seconds.",
-    icon: Activity,
-  },
-  {
-    id: "step-02",
-    label: "STEP 02",
-    title: "Rapid Assessment & Imaging Trigger",
-    subtitle: "Protocols surfaced instantly—no hunting for info.",
-    icon: ScanLine,
-  },
-  {
-    id: "step-03",
-    label: "STEP 03",
-    title: "AI-Supported Clinical Decisions",
-    subtitle: "Decision support that stays within clinician control.",
-    icon: BrainCircuit,
-  },
-  {
-    id: "step-04",
-    label: "STEP 04",
-    title: "Orchestrated Care & Escalation",
-    subtitle: "One-click coordination across teams and pathways.",
-    icon: Stethoscope,
-  },
-  {
-    id: "step-05",
-    label: "STEP 05",
-    title: "Audit-Ready Governance",
-    subtitle: "Immutable action trail for safety and compliance.",
-    icon: ShieldCheck,
-  },
-];
-
-const floatingCardsByStep: Record<number, FloatingCard[]> = {
-  0: [
-    {
-      id: "c1",
-      text: "TRIAGE QUEUE",
-      top: "10%",
-      left: "58%",
-      bg: "bg-white/5",
-      border: "border-white/10",
-      color: "text-cyan-200",
-    },
-    {
-      id: "c2",
-      text: "HIGH: John Smith",
-      top: "22%",
-      left: "62%",
-      bg: "bg-red-500/10",
-      border: "border-red-400/20",
-      color: "text-red-200",
-    },
-    {
-      id: "c3",
-      text: "MEDIUM: Sarah Jenkins",
-      top: "34%",
-      left: "60%",
-      bg: "bg-amber-500/10",
-      border: "border-amber-400/20",
-      color: "text-amber-200",
-    },
-    {
-      id: "c4",
-      text: "LOW: Michael Chen",
-      top: "46%",
-      left: "61%",
-      bg: "bg-emerald-500/10",
-      border: "border-emerald-400/20",
-      color: "text-emerald-200",
-    },
-  ],
-  1: [
-    {
-      id: "c1",
-      text: "CT REQUESTED",
-      top: "18%",
-      left: "60%",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-400/20",
-      color: "text-cyan-200",
-    },
-    {
-      id: "c2",
-      text: "Door-to-CT: 9m",
-      top: "33%",
-      left: "62%",
-      bg: "bg-white/5",
-      border: "border-white/10",
-      color: "text-blue-100",
-    },
-  ],
-  2: [
-    {
-      id: "c1",
-      text: "RISK PANEL",
-      top: "18%",
-      left: "60%",
-      bg: "bg-white/5",
-      border: "border-white/10",
-      color: "text-blue-100",
-    },
-    {
-      id: "c2",
-      text: "ICU Probability ↑",
-      top: "33%",
-      left: "62%",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-400/20",
-      color: "text-cyan-200",
-    },
-  ],
-  3: [
-    {
-      id: "c1",
-      text: "CALL TEAM",
-      top: "20%",
-      left: "60%",
-      bg: "bg-white/5",
-      border: "border-white/10",
-      color: "text-blue-100",
-    },
-    {
-      id: "c2",
-      text: "TRANSFER READY",
-      top: "38%",
-      left: "62%",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-400/20",
-      color: "text-cyan-200",
-    },
-  ],
-  4: [
-    {
-      id: "c1",
-      text: "AUDIT LOG",
-      top: "22%",
-      left: "60%",
-      bg: "bg-white/5",
-      border: "border-white/10",
-      color: "text-blue-100",
-    },
-    {
-      id: "c2",
-      text: "IMMUTABLE",
-      top: "40%",
-      left: "62%",
-      bg: "bg-cyan-500/10",
-      border: "border-cyan-400/20",
-      color: "text-cyan-200",
-    },
-  ],
+  description: string;
+  Icon: React.ComponentType<{ size?: number }>;
+  accent: "cyan" | "blue";
+  action?: string;
 };
 
 export default function PlatformPipeline() {
-  const [activeStep, setActiveStep] = useState(0);
+  const pipelineSteps: Step[] = useMemo(
+    () => [
+      {
+        id: "s1",
+        step: "STEP 01",
+        title: "Patient Arrival & Smart Triage",
+        description: "Signal detection and priority triage in seconds.",
+        Icon: Activity,
+        accent: "cyan",
+      },
+      {
+        id: "s2",
+        step: "STEP 02",
+        title: "Rapid Assessment & Imaging Trigger",
+        description: "Protocols surfaced instantly—no hunting for info.",
+        Icon: Scan,
+        accent: "cyan",
+        action: "CALL TEAM",
+      },
+      {
+        id: "s3",
+        step: "STEP 03",
+        title: "AI-Supported Clinical Decisions",
+        description: "Decision support that stays within clinician control.",
+        Icon: BrainCircuit,
+        accent: "cyan",
+        action: "TRANSFER READY",
+      },
+      {
+        id: "s4",
+        step: "STEP 04",
+        title: "Orchestrated Care & Escalation",
+        description: "One-click coordination across teams and pathways.",
+        Icon: Stethoscope,
+        accent: "blue",
+      },
+      {
+        id: "s5",
+        step: "STEP 05",
+        title: "Audit-Ready Governance",
+        description: "Immutable action trail for safety and compliance.",
+        Icon: ShieldCheck,
+        accent: "blue",
+      },
+    ],
+    []
+  );
+
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % pipelineSteps.length);
-    }, 1200); // ~6s loop for 5 steps
+    }, 1400); // smooth, readable pace
     return () => clearInterval(interval);
-  }, []);
+  }, [pipelineSteps.length]);
 
-  const step = pipelineSteps[activeStep];
-  const cards = floatingCardsByStep[activeStep] ?? [];
+  // Anchored card positions to prevent “misplaced” labels
+  // These are relative to the right panel container.
+  const cardPositions = useMemo(
+    () => [
+      { top: "12%", left: "58%" }, // step 1
+      { top: "26%", left: "64%" }, // step 2
+      { top: "44%", left: "60%" }, // step 3
+      { top: "62%", left: "56%" }, // step 4
+      { top: "78%", left: "54%" }, // step 5
+    ],
+    []
+  );
+
+  const current = pipelineSteps[activeStep];
+  const currentPos = cardPositions[activeStep] ?? cardPositions[0];
+
+  const progressPct =
+    pipelineSteps.length <= 1
+      ? 0
+      : (activeStep / (pipelineSteps.length - 1)) * 100;
 
   return (
-    <section className="relative py-28 bg-[#020617] text-white overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Subtle animated grid */}
+    <section className="relative py-24 bg-[#020617] text-white overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* subtle animated grid */}
         <motion.div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(34,211,238,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.06) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+              "linear-gradient(rgba(34,211,238,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.07) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
           }}
-          animate={{ backgroundPosition: ["0px 0px", "40px 40px"] }}
-          transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+          animate={{ backgroundPosition: ["0px 0px", "44px 44px"] }}
+          transition={{ duration: 6, ease: "linear", repeat: Infinity }}
         />
-
-        {/* Cyan glow gradients */}
-        <div className="absolute top-0 left-1/4 w-[520px] h-[520px] bg-cyan-500/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-0 right-1/4 w-[680px] h-[680px] bg-blue-600/10 rounded-full blur-[170px]" />
-
-        {/* Vignette edges */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_72%)] opacity-80" />
+        {/* glows */}
+        <div className="absolute -top-24 left-1/4 w-[620px] h-[620px] bg-cyan-500/10 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-24 right-1/4 w-[760px] h-[760px] bg-blue-600/10 rounded-full blur-[160px]" />
+        {/* vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_80%)] opacity-80" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* LEFT SIDE */}
-        <div className="flex flex-col justify-center">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-cyan-200/90 bg-white/5 border border-white/10 rounded-full px-3 py-1 w-fit">
-            PLATFORM PIPELINE
-          </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT SIDE */}
+          <div className="flex flex-col justify-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold tracking-tight"
+            >
+              A Clinical Workflow Pipeline
+              <span className="block text-white/70 mt-3 text-xl md:text-2xl font-semibold">
+                From arrival → imaging → decision → escalation → audit
+              </span>
+            </motion.h2>
 
-          <h2 className="mt-5 text-4xl md:text-5xl font-bold tracking-tight">
-            Orchestrated Emergency Workflows
-          </h2>
-
-          <p className="mt-5 text-blue-100/80 text-lg leading-relaxed max-w-xl">
-            A single intelligence layer that unifies signals, detects deterioration,
-            and drives protocol execution—without breaking clinical flow.
-          </p>
-
-          <div className="mt-10">
-            <div className="text-cyan-200 text-sm font-semibold tracking-widest">
-              {step.label}
-            </div>
-            <div className="mt-2 text-2xl md:text-3xl font-bold">
-              {step.title}
-            </div>
-            <div className="mt-2 text-blue-100/80">{step.subtitle}</div>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className="relative h-[760px] flex items-center justify-center">
-          {/* Visual container */}
-          <div className="relative w-full max-w-xl">
-            {/* Vertical pipeline line background */}
-            <div className="absolute left-[31px] top-8 bottom-8 w-0.5 bg-white/10 rounded-full" />
-
-            {/* Animated progress line */}
-            <motion.div
-              className="absolute left-[31px] top-8 w-0.5 bg-cyan-400 rounded-full shadow-[0_0_18px_rgba(34,211,238,0.75)]"
-              animate={{
-                height: `${(activeStep / (pipelineSteps.length - 1)) * 100}%`,
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              style={{ bottom: "auto" }}
-            />
-
-            {/* Steps */}
-            <div className="flex flex-col justify-between h-[640px] relative z-10 py-6">
-              {pipelineSteps.map((s, index) => {
-                const isActive = index === activeStep;
-                const isPast = index <= activeStep;
-                const Icon = s.icon;
+            <div className="mt-10 space-y-6">
+              {pipelineSteps.map((s, idx) => {
+                const isActive = idx === activeStep;
+                const isPast = idx < activeStep;
 
                 return (
-                  <div key={s.id} className="relative flex items-center gap-6">
-                    <div
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setActiveStep(idx)}
+                    className="w-full text-left"
+                  >
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        opacity: isActive ? 1 : isPast ? 0.75 : 0.55,
+                        y: isActive ? 0 : 0,
+                      }}
+                      transition={{ duration: 0.25 }}
                       className={[
-                        "relative flex items-center justify-center w-16 h-16 rounded-full border-2 transition-all duration-500 bg-[#020617]",
+                        "rounded-2xl border backdrop-blur-md px-5 py-4",
                         isActive
-                          ? "border-cyan-400 text-cyan-200 shadow-[0_0_22px_rgba(34,211,238,0.55)] scale-110"
-                          : isPast
-                          ? "border-cyan-400/50 text-cyan-200/60"
-                          : "border-white/10 text-white/30",
+                          ? "border-cyan-300/40 bg-white/8"
+                          : "border-white/10 bg-white/5 hover:bg-white/6 hover:border-white/20",
                       ].join(" ")}
                     >
-                      <Icon size={28} />
-                      {isActive && (
-                        <motion.div
-                          className="absolute inset-0 rounded-full border border-cyan-400"
-                          animate={{ scale: [1, 1.6], opacity: [1, 0] }}
-                          transition={{
-                            duration: 1.4,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                          }}
-                        />
-                      )}
-                    </div>
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={[
+                            "mt-0.5 w-11 h-11 rounded-xl flex items-center justify-center border",
+                            isActive
+                              ? "border-cyan-300/40 bg-cyan-400/10"
+                              : "border-white/10 bg-white/5",
+                          ].join(" ")}
+                        >
+                          <s.Icon size={20} />
+                        </div>
 
-                    <div className="min-w-0">
-                      <div className="text-xs font-semibold tracking-widest text-cyan-200/80">
-                        {s.label}
+                        <div className="flex-1">
+                          <div className="text-xs font-semibold tracking-widest text-cyan-200/80">
+                            {s.step}
+                          </div>
+                          <div className="mt-1 text-lg md:text-xl font-semibold">
+                            {s.title}
+                          </div>
+                          <div className="mt-1 text-sm md:text-base text-white/70">
+                            {s.description}
+                          </div>
+                        </div>
                       </div>
-                      <div
-                        className={[
-                          "mt-1 font-semibold leading-tight",
-                          isActive ? "text-white text-xl" : "text-white/70 text-lg",
-                        ].join(" ")}
-                      >
-                        {s.title}
-                      </div>
-                      <div className="mt-1 text-sm text-blue-100/70">
-                        {s.subtitle}
-                      </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </button>
                 );
               })}
             </div>
+          </div>
 
-            {/* Floating UI cards */}
-            <AnimatePresence>
-              {cards.map((card) => (
+          {/* RIGHT SIDE */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-full max-w-xl h-[640px] md:h-[680px]">
+              {/* vertical line */}
+              <div className="absolute left-[34px] top-10 bottom-10 w-[2px] bg-white/10 rounded-full" />
+              <motion.div
+                className="absolute left-[34px] top-10 w-[2px] bg-cyan-300/70 rounded-full shadow-[0_0_18px_rgba(34,211,238,0.55)]"
+                animate={{ height: `${progressPct}%` }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+              />
+
+              {/* step nodes */}
+              <div className="absolute left-0 top-10 bottom-10 flex flex-col justify-between">
+                {pipelineSteps.map((s, idx) => {
+                  const isActive = idx === activeStep;
+                  const isPast = idx < activeStep;
+
+                  return (
+                    <div key={s.id} className="flex items-center gap-4">
+                      <div
+                        className={[
+                          "w-[70px] h-[70px] rounded-full flex items-center justify-center border transition-all duration-300",
+                          isActive
+                            ? "border-cyan-300/60 bg-cyan-400/10 shadow-[0_0_30px_rgba(34,211,238,0.35)] scale-[1.06]"
+                            : isPast
+                            ? "border-cyan-300/25 bg-white/6"
+                            : "border-white/10 bg-white/4",
+                        ].join(" ")}
+                      >
+                        <s.Icon size={26} />
+                      </div>
+
+                      <div className="hidden md:block">
+                        <div className="text-xs font-semibold tracking-widest text-cyan-200/80">
+                          {s.step}
+                        </div>
+                        <div className="text-base font-semibold text-white/90">
+                          {s.title}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Floating card - anchored to container */}
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={card.id}
-                  initial={{ opacity: 0, x: 16, y: 8 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }}
-                  exit={{ opacity: 0, x: 10, y: -10 }}
-                  transition={{ duration: 0.35 }}
+                  key={current.id}
+                  initial={{ opacity: 0, x: 24, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 10, y: -10, scale: 0.98 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
                   className={[
-                    "absolute z-20 px-4 py-2 rounded-xl border backdrop-blur-md shadow-xl",
-                    card.bg,
-                    card.border,
+                    "absolute z-20 min-w-[260px] max-w-[340px]",
+                    "rounded-2xl border backdrop-blur-xl shadow-2xl",
+                    "bg-white/7 border-white/12",
                   ].join(" ")}
-                  style={{ top: card.top, left: card.left }}
+                  style={{
+                    top: currentPos.top,
+                    left: currentPos.left,
+                    transform: "translate(-10%, -50%)",
+                  }}
                 >
-                  <span className={["text-sm font-bold tracking-wide", card.color].join(" ")}>
-                    {card.text}
-                  </span>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="text-[11px] font-semibold tracking-widest text-cyan-200/80">
+                          {current.step}
+                        </div>
+                        <div className="mt-1 text-base font-semibold">
+                          {current.title}
+                        </div>
+                      </div>
+
+                      {current.action ? (
+                        <span className="shrink-0 text-[11px] font-semibold px-3 py-1 rounded-full border border-cyan-300/30 bg-cyan-400/10 text-cyan-200">
+                          {current.action}
+                        </span>
+                      ) : null}
+                    </div>
+
+                    <div className="mt-2 text-sm text-white/75">
+                      {current.description}
+                    </div>
+
+                    <div className="mt-4 flex items-center gap-2">
+                      <div className="h-[6px] flex-1 rounded-full bg-white/10 overflow-hidden">
+                        <motion.div
+                          className="h-full bg-cyan-300/70"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 1.0, ease: "linear" }}
+                        />
+                      </div>
+                      <div className="text-[11px] text-white/60">
+                        {activeStep + 1}/{pipelineSteps.length}
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
-              ))}
-            </AnimatePresence>
+              </AnimatePresence>
+
+              {/* subtle right-panel plate to “feel” like the other sections */}
+              <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/3 backdrop-blur-sm" />
+            </div>
           </div>
         </div>
       </div>
