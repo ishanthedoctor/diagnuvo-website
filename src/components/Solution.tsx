@@ -41,7 +41,7 @@ export default function Solution() {
         <div className="flex justify-center mb-8">
           <div className="w-14 h-14 flex items-center justify-center rounded-xl 
           bg-white/5 border border-white/10 backdrop-blur-md">
-            🛡️
+            <img src="/logo.png" alt="Diagnuvo Shield" className="w-8 h-8 object-contain" />
           </div>
         </div>
 
