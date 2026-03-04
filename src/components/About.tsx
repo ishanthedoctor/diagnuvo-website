@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-bright-white border-t border-border-gray"
+      className="py-24 md:py-32 bg-bright-white"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
