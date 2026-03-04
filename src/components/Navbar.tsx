@@ -46,7 +46,7 @@ export default function Navbar() {
           <img
             src="/diagnuvo.png"
             alt="Diagnuvo Logo"
-            className="h-11 md:h-12 w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain"
           />
         </a>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#"
-            className="hidden md:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/15 rounded-full transition-colors"
+            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/15 rounded-full transition-colors"
           >
             NEXT-GEN ED INTELLIGENCE
           </a>
