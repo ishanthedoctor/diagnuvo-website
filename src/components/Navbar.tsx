@@ -42,11 +42,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
-        <a href="/" className="flex items-center z-50 relative">
+        <a href="/" className="flex items-center z-52 relative">
           <img
             src="/diagnuvo.png"
             alt="Diagnuvo Logo"
-            className="h-36 md:h-38 w-auto object-contain"
+            className="h-40 md:h-42 w-auto object-contain"
           />
         </a>
 
