@@ -53,7 +53,7 @@ export default function Solution() {
   animate={{ y: [0, 6, 0] }}
   transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
 >
-  <ArrowDown className="text-cyan-200" size={28} />
+  <ArrowDown className="text-cyan-200" size={32} />
 </motion.div>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Solution() {
     animate={{ y: [0, -6, 0] }}
     transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
   >
-    <ArrowUp className="text-cyan-200" size={28} />
+    <ArrowUp className="text-cyan-200" size={32} />
   </motion.div>
 </div>
             </div>
@@ -95,7 +95,7 @@ export default function Solution() {
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
             <div className="flex justify-center mb-4">
               <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <ShieldCheck className="text-cyan-200" size={20} />
+                <ShieldCheck className="text-cyan-200" size={32} />
               </div>
             </div>
             <div className="text-4xl md:text-5xl font-bold text-cyan-200 text-center leading-tight">
