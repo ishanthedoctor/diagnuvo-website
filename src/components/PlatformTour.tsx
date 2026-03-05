@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import StepsPathOverlay from "./StepsPathOverlay";
 import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import {
   Activity,
@@ -65,7 +64,6 @@ export default function PlatformTour() {
   className="relative bg-[#020617] text-white h-[400vh] scroll-mt-20"
 >
 
-  <StepsPathOverlay targetRef={containerRef} />
 
   <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
         {/* Background */}
