@@ -25,7 +25,7 @@ const steps = [
   }
 ];
 
-const CLINICIAN_NAME = "Dr Ishan";
+const CLINICIAN_NAME = "Dr Ishanjit";
 
 export default function PlatformTour() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -87,27 +87,26 @@ export default function PlatformTour() {
               </p>
             </div>
 
-            <div className="relative flex flex-col gap-12">
-              {/* Vertical line background */}
-            
-              {/* Vertical line progress */}
-              <motion.div 
-                className="absolute left-[23px] top-4 w-0.5 bg-cyan-400 origin-top shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-                style={{ scaleY: scrollYProgress }}
-              />
+           <div className="relative flex flex-col gap-12">
+  {/* Vertical line background */}
+  <div className="absolute left-[23px] top-4 bottom-4 w-px bg-white/10" />
 
-              {steps.map((step, i) => {
-                const isActive = activeStep === i;
-                const isPast = activeStep > i;
-                return (
-                  <div key={i} className={`relative flex gap-6 transition-all duration-500 ${isActive ? 'opacity-100 translate-x-2' : 'opacity-40'}`}>
-                    <div className={`relative z-10 flex items-center justify-center w-12 h-12 rounded-full border-2 transition-colors duration-500 bg-[#020617] ${isActive || isPast ? 'border-cyan-400 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]' : 'border-white/20 text-white/50'}`}>
-                      <step.icon size={20} />
-                    </div>
-                    <div className="pt-2">
-                      <h3 className={`text-2xl font-semibold mb-2 transition-colors duration-500 ${isActive ? 'text-white' : 'text-white/70'}`}>{step.title}</h3>
-                      <p className="text-white/60 leading-relaxed max-w-md">{step.description}</p>
-                    </div>
+  {/* Vertical line progress */}
+  <motion.div
+    className="absolute left-[23px] top-4 bottom-4 w-0.5 bg-cyan-400 origin-top shadow-[0_0_12px_rgba(34,211,238,0.6)]"
+    style={{ scaleY: scrollYProgress }}
+  />
+
+  {/* Moving glow head */}
+  <motion.div
+    className="absolute left-[23px] -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-300 shadow-[0_0_22px_rgba(34,211,238,0.9)]"
+    style={{
+      top: scrollYProgress.to((v) => `${4 + v * 92}%`),
+    }}
+  />
+
+  {steps.map((step, i) => {
+    // ... keep your map exactly as-is
                   </div>
                 )
               })}
