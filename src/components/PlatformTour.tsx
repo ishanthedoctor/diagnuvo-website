@@ -89,7 +89,7 @@ export default function PlatformTour() {
 
             <div className="relative flex flex-col gap-12">
               {/* Vertical line background */}
-              <div className="absolute left-[23px] top-4 bottom-4 w-0.5 bg-white/10" />
+            
               {/* Vertical line progress */}
               <motion.div 
                 className="absolute left-[23px] top-4 w-0.5 bg-cyan-400 origin-top shadow-[0_0_10px_rgba(34,211,238,0.5)]"
