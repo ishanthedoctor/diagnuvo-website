@@ -284,7 +284,7 @@ export default function PlatformTour() {
                   <h4 className="text-lg font-semibold text-white">Audit Log</h4>
                 </div>
                 
-                <div className="space-y-4 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">
+                <div className="space-y-4 relative">
                   {[
                     { time: "14:02:11", user: CLINICIAN_NAME, action: "Viewed Patient Chart" },
                     { time: "14:05:33", user: "System", action: "Sepsis Alert Triggered" },
