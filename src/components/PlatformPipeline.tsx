@@ -122,11 +122,8 @@ export default function PlatformPipeline() {
             <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl overflow-hidden">
               <div className="relative p-7">
 
-                {/* PIPELINE LINE */}
-                <div className="absolute left-[42px] top-0 bottom-0 w-[2px] bg-white/10" />
+                
 
-                <motion.div
-                  className="absolute left-[42px] top-0 w-[2px] bg-cyan-400"
                   animate={{
                     height: `${((activeStep + 1) / pipelineSteps.length) * 100}%`
                   }}
