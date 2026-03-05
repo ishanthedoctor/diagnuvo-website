@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import {
   Activity,
   ShieldAlert,
@@ -48,9 +48,10 @@ export default function PlatformTour() {
     target: containerRef,
     offset: ["start start", "end end"],
   });
-
+const glowTop = useTransform(scrollYProgress, [0, 1], ["4%", "96%"]);
   // OPTIONAL: page scroll for subtle background parallax (safe)
-  const { scrollYProgress: pageScroll } = useScroll();
+  const { scrollYProgress: pageScrollProgress } = useScroll();
+const pageParallaxY = useTransform(pageScrollProgress, [0, 1], [0, -120]);
 
   const [activeStep, setActiveStep] = useState(0);
 
@@ -83,7 +84,7 @@ export default function PlatformTour() {
           {/* Parallax Glow Blobs */}
           <motion.div
             className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]"
-            style={{ y: pageScroll }}
+            style={{ y: pageParallaxY }}
           />
           <motion.div
             className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px]"
@@ -132,15 +133,13 @@ export default function PlatformTour() {
                 className="absolute left-[23px] top-4 bottom-4 w-0.5 bg-cyan-400 origin-top shadow-[0_0_12px_rgba(34,211,238,0.6)]"
                 style={{ scaleY: scrollYProgress }}
               />
-
-              {/* Moving glow head */}
-              <motion.div
-                className="absolute left-[23px] -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-300 shadow-[0_0_22px_rgba(34,211,238,0.9)]"
-                style={{
-                  top: scrollYProgress.to((v) => `${4 + v * 92}%`),
-                }}
-              />
-
+{/* Moving glow head */}
+<motion.div
+  className="absolute left-[23px] -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-300 shadow-[0_0_22px_rgba(34,211,238,0.9)]"
+  style={{
+    top: glowTop
+  }}
+/>
               {steps.map((step, i) => (
                 <div key={i} className="relative pl-14">
                   <div className="flex items-start gap-4">
