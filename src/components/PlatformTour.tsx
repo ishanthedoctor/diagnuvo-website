@@ -98,7 +98,8 @@ export default function PlatformTour() {
   });
 
   const progressY = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
+  const railHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const railTop = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const [activeStep, setActiveStep] = useState(0);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -140,7 +141,7 @@ export default function PlatformTour() {
         </div>
 
         {/* fixed rail */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-[80px] -translate-x-1/2 z-30">
+<div className="pointer-events-none absolute left-6 md:left-12 top-0 h-full w-px z-30 hidden lg:block">
 
           <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
 
