@@ -76,9 +76,14 @@ export default function PlatformTour() {
 
   {/* Glowing rail that grows/shrinks with scroll */}
   <motion.div
-    className="absolute top-0 left-[26px] w-[2px] bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
-    style={{ height: railHeight }}
-  />
+  className="absolute left-[26px] w-[2px] bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
+  style={{
+    top: "calc(50% + 8px)",
+    height: "calc(50% - 8px)",
+    scaleY: scrollYProgress,
+    transformOrigin: "top",
+  }}
+/>
 </div>
         {/* Background */}
         <div className="absolute inset-0 z-0 bg-[#020617]">
