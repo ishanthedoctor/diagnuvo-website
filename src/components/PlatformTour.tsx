@@ -69,9 +69,7 @@ export default function PlatformTour() {
   <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
     {/* Left circle + scroll progress line */}
 <div className="pointer-events-none absolute left-[72px] top-0 h-full w-[80px]">
-  {/* Circle stays */}
-
-
+  
   {/* Base rail */}
   <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
 
