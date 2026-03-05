@@ -68,19 +68,23 @@ export default function PlatformTour() {
 
   <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden relative">
     {/* Left circle + scroll progress line */}
-{/* Left circle + scroll progress line */}
-<div className="pointer-events-none absolute left-[72px] top-0 h-full w-[80px] z-30">
-  {/* Base rail */}
-  <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
+{/* Left circle + scroll progress line (DEBUG: MUST be visible) */}
+<div className="fixed left-[72px] top-0 h-screen w-[80px] z-[9999]">
+  {/* DEBUG square */}
+  <div className="absolute top-6 left-0 w-8 h-8 bg-red-500" />
 
-  {/* Glowing rail that grows/shrinks with scroll */}
+  {/* Base rail */}
+  <div className="absolute top-0 left-[26px] h-full w-[6px] bg-yellow-400" />
+
+  {/* Progress rail */}
   <motion.div
-    className="absolute top-0 left-[26px] h-full w-[2px] bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
+    className="absolute top-0 left-[26px] h-full w-[6px] bg-cyan-300"
     style={{ scaleY: progressY, transformOrigin: "top" }}
   />
 
-  {/* Circle stays */}
-  <div className="absolute top-[50%] -translate-y-1/2 left-[18px] w-4 h-4 rounded-full border border-cyan-300/40 bg-[#020617] shadow-[0_0_18px_rgba(34,211,238,0.35)]" />
+  {/* Circle */}
+  <div className="absolute top-1/2 -translate-y-1/2 left-[18px] w-6 h-6 rounded-full bg-black border border-cyan-200" />
+</div>
 </div>
         {/* Background */}
         <div className="absolute inset-0 z-0 bg-[#020617]">
