@@ -123,13 +123,6 @@ export default function PlatformPipeline() {
               <div className="relative p-7">
 
                 
-
-                  animate={{
-                    height: `${((activeStep + 1) / pipelineSteps.length) * 100}%`
-                  }}
-                  transition={{ duration: 0.5 }}
-                />
-
                 {/* STEPS */}
                 <div className="space-y-6">
 
