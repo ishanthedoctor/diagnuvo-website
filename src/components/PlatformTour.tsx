@@ -141,32 +141,28 @@ export default function PlatformTour() {
         </div>
 
         {/* fixed rail */}
-<div className="pointer-events-none absolute left-6 md:left-12 top-0 h-full w-px z-30 hidden lg:block">
-          <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
+<div className="pointer-events-none absolute left-6 md:left-12 top-0 h-full w-[80px] z-30 hidden lg:block">
+  {/* Base rail (full height, dim) */}
+  <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
 
-          <motion.div
-            className="absolute top-0 left-[26px] h-full w-[2px] bg-cyan-300"
-            style={{
-              scaleY: progressY,
-              transformOrigin: "top",
-              boxShadow: "0 0 18px rgba(34,211,238,0.35)",
-            }}
-          />
+  {/* Glowing rail: starts at the dot (50%) and grows DOWN */}
+  <motion.div
+    className="absolute left-[26px] w-[2px] bg-cyan-300"
+    style={{
+      top: "50%",
+      scaleY: progressY,
+      transformOrigin: "top",
+      boxShadow: "0 0 18px rgba(34,211,238,0.35)",
+      height: "50%",
+    }}
+  />
 
-            <div
+  {/* Dot (start point) */}
+  <div
     className="absolute top-1/2 -translate-y-1/2 left-[-18px] w-4 h-4 rounded-full border border-cyan-300/40 bg-[#020617]"
     style={{ boxShadow: "0 0 18px rgba(34,211,238,0.35)" }}
   />
-
 </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-
-            {/* left */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs tracking-widest text-white/70">
-                PLATFORM TOUR
-              </div>
 
               <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
                 {current.title}
