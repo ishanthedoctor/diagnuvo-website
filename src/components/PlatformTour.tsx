@@ -81,6 +81,7 @@ function Badge({ text, tone }: { text: string; tone: "red" | "amber" | "cyan" | 
       : "bg-white/10 text-white/70 border-white/15";
 
   if (!text) return null;
+
   return (
     <span className={`px-2 py-0.5 text-[11px] rounded-full border ${cls}`}>
       {text}
@@ -96,7 +97,6 @@ export default function PlatformTour() {
     offset: ["start start", "end end"],
   });
 
-  // progress 0..1 for the left rail fill
   const progressY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const [activeStep, setActiveStep] = useState(0);
@@ -117,9 +117,9 @@ export default function PlatformTour() {
       ref={containerRef}
       className="relative bg-[#020617] text-white h-[400vh] scroll-mt-20 overflow-hidden"
     >
-      {/* Sticky stage */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden relative">
-        {/* Background grid (safe) */}
+
+        {/* background grid */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute inset-0 opacity-[0.18]"
@@ -139,12 +139,11 @@ export default function PlatformTour() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/40" />
         </div>
 
-        {/* Left circle + scroll-progress rail (final) */}
-        <div className="pointer-events-none absolute left-[72px] top-0 h-full w-[80px] z-30">
-          {/* Base rail */}
+        {/* fixed rail */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-[80px] -translate-x-1/2 z-30">
+
           <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
 
-          {/* Progress rail */}
           <motion.div
             className="absolute top-0 left-[26px] h-full w-[2px] bg-cyan-300"
             style={{
@@ -154,39 +153,28 @@ export default function PlatformTour() {
             }}
           />
 
-          {/* Circle stays */}
           <div
             className="absolute top-1/2 -translate-y-1/2 left-[18px] w-4 h-4 rounded-full border border-cyan-300/40 bg-[#020617]"
             style={{ boxShadow: "0 0 18px rgba(34,211,238,0.35)" }}
           />
         </div>
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            {/* Left text */}
+
+            {/* left */}
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs tracking-widest text-white/70">
                 PLATFORM TOUR
               </div>
 
               <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-                {current.title.includes("&") ? (
-                  <>
-                    {current.title.split("&")[0].trim()} &{" "}
-                    <span className="text-cyan-300">{current.title.split("&")[1].trim()}</span>
-                  </>
-                ) : (
-                  <>
-                    {current.title.split(" ").slice(0, 2).join(" ")}{" "}
-                    <span className="text-cyan-300">
-                      {current.title.split(" ").slice(2).join(" ")}
-                    </span>
-                  </>
-                )}
+                {current.title}
               </h2>
 
-              <p className="mt-5 text-white/70 text-lg max-w-xl">{current.subtitle}</p>
+              <p className="mt-5 text-white/70 text-lg max-w-xl">
+                {current.subtitle}
+              </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <button className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 transition">
@@ -202,86 +190,45 @@ export default function PlatformTour() {
               </div>
             </div>
 
-            {/* Right demo card */}
+            {/* right card */}
             <div className="relative">
               <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl overflow-hidden">
+
                 <div className="p-7">
+
                   <div className="flex items-start justify-between">
+
                     <div className="flex items-center gap-3">
-                      <div
-                        className="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-300/40 bg-[#020617]"
-                        style={{ boxShadow: "0 0 18px rgba(34,211,238,0.25)" }}
-                      >
+
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full border border-cyan-300/40 bg-[#020617]">
                         <Icon size={22} className="text-cyan-200" />
                       </div>
+
                       <div>
                         <div className="text-xs tracking-[0.25em] text-cyan-200/70">
                           {current.step}
                         </div>
-                        <div className="text-lg font-semibold mt-1">{current.title}</div>
+                        <div className="text-lg font-semibold mt-1">
+                          {current.title}
+                        </div>
                       </div>
+
                     </div>
 
                     <div className="text-xs text-white/60">
                       {activeStep + 1}/{steps.length}
                     </div>
+
                   </div>
 
-                  <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] overflow-hidden">
-                    <div className="px-4 py-3 text-[11px] tracking-[0.22em] text-white/55 text-center">
-                      {current.panelTitle}
-                    </div>
-
-                    <div className="px-4 pb-4 space-y-3">
-                      {current.panelItems.map((it, idx) => (
-                        <div
-                          key={`${it.label}-${idx}`}
-                          className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-cyan-300/80" />
-                            <div className="text-sm text-white/85">{it.label}</div>
-                          </div>
-                          <Badge text={it.badge} tone={it.tone as any} />
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="px-4 pb-4">
-                      <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 flex items-center justify-between">
-                        <div className="text-sm text-white/70">{current.footer}</div>
-                        <ChevronRight className="w-4 h-4 text-white/40" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 flex gap-3 flex-wrap">
-                    <button className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.06] transition text-sm flex items-center gap-2">
-                      <Phone className="w-4 h-4" />
-                      Call
-                    </button>
-                    <button className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.06] transition text-sm flex items-center gap-2">
-                      <ArrowRight className="w-4 h-4" />
-                      Transfer
-                    </button>
-                    <button className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.06] transition text-sm flex items-center gap-2">
-                      <Lock className="w-4 h-4" />
-                      Audit
-                    </button>
-                    <button className="px-4 py-2 rounded-xl border border-cyan-400/25 bg-cyan-500/10 hover:bg-cyan-500/15 transition text-sm flex items-center gap-2 text-cyan-100">
-                      <BrainCircuit className="w-4 h-4" />
-                      AI Assist
-                    </button>
-                  </div>
                 </div>
-              </div>
 
-              <div className="pointer-events-none absolute -inset-8 rounded-[32px] blur-2xl"
-                style={{ background: "rgba(34,211,238,0.06)" }}
-              />
+              </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );
