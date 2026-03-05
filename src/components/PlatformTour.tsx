@@ -47,7 +47,7 @@ export default function PlatformTour() {
 
   // ✅ Stable: no .to() usage
   const glowTop = useTransform(scrollYProgress, [0, 1], ["4%", "96%"]);
-
+  const railHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const [activeStep, setActiveStep] = useState(0);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -66,6 +66,20 @@ export default function PlatformTour() {
 
 
   <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+    {/* Left circle + scroll progress line */}
+<div className="pointer-events-none absolute left-[72px] top-0 h-full w-[80px]">
+  {/* Circle stays */}
+  <div className="absolute top-[50%] -translate-y-1/2 left-[18px] w-4 h-4 rounded-full border border-cyan-300/40 bg-[#020617] shadow-[0_0_18px_rgba(34,211,238,0.35)]" />
+
+  {/* Base rail */}
+  <div className="absolute top-0 left-[26px] h-full w-[2px] bg-white/10" />
+
+  {/* Glowing rail that grows/shrinks with scroll */}
+  <motion.div
+    className="absolute top-0 left-[26px] w-[2px] bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
+    style={{ height: railHeight }}
+  />
+</div>
         {/* Background */}
         <div className="absolute inset-0 z-0 bg-[#020617]">
           <div
