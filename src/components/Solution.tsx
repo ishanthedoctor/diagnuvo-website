@@ -67,8 +67,13 @@ export default function Solution() {
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
             <div className="flex justify-center mb-4">
               <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <ArrowUp className="text-cyan-200" size={20} />
-              </div>
+  <motion.div
+    animate={{ y: [0, -6, 0] }}
+    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+  >
+    <ArrowUp className="text-cyan-200" size={20} />
+  </motion.div>
+</div>
             </div>
             <div className="text-5xl md:text-6xl font-bold text-cyan-200 text-center">
               65%
