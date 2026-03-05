@@ -48,6 +48,7 @@ export default function PlatformTour() {
   // ✅ Stable: no .to() usage
   const glowTop = useTransform(scrollYProgress, [0, 1], ["4%", "96%"]);
   const railHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const railFromCircle = useTransform(scrollYProgress, [0, 1], ["0px", "calc(50% - 8px)"]);
   const [activeStep, setActiveStep] = useState(0);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -79,9 +80,9 @@ export default function PlatformTour() {
   className="absolute left-[26px] w-[2px] bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.45)]"
   style={{
     top: "calc(50% + 8px)",
-    height: "calc(50% - 8px)",
-    scaleY: scrollYProgress,
-    transformOrigin: "top",
+    height: railFromCircle,
+  }}
+/>
   }}
 />
 </div>
