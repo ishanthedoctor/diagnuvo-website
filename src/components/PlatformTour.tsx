@@ -69,7 +69,7 @@ export default function PlatformTour() {
   <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden relative">
     {/* Left circle + scroll progress line */}
 {/* Left circle + scroll progress line (DEBUG: MUST be visible) */}
-<div className="fixed left-[72px] top-0 h-screen w-[80px] z-[9999]">
+<div className="fixed left-[72px] top-0 h-screen w-[80px] z-50">
   {/* DEBUG square */}
   <div className="absolute top-6 left-0 w-8 h-8 bg-red-500" />
 
