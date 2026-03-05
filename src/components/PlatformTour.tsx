@@ -83,11 +83,7 @@ export default function PlatformTour() {
                 Diagnuvo ED™<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">features</span>
               </h2>
               <p className="text-white/60 text-lg max-w-md">
-                A unified intelligence layer that transforms raw emergency data into orchestrated action.
-              </p>
-            </div>
-
-           <div className="relative flex flex-col gap-12">
+                <div className="relative flex flex-col gap-12">
   {/* Vertical line background */}
   <div className="absolute left-[23px] top-4 bottom-4 w-px bg-white/10" />
 
@@ -105,24 +101,25 @@ export default function PlatformTour() {
     }}
   />
 
-  {steps.map((step, i) => {
-    // ... keep your map exactly as-is
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+  {steps.map((step, i) => (
+    <div key={i} className="relative pl-14">
+      <div className="flex items-start gap-4">
+        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+          <step.icon className="w-5 h-5 text-cyan-400" />
+        </div>
 
-          {/* Right: Animated Demo Panel */}
-          <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl overflow-hidden flex items-center justify-center group">
-            {/* Hover state: slight lift + border glow */}
-            <div className="absolute inset-0 rounded-2xl border border-cyan-500/0 group-hover:border-cyan-500/30 transition-colors duration-500 pointer-events-none" />
-            
-            {/* Step 1: Unify ED Signals */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: activeStep === 0 ? 1 : 0, scale: activeStep === 0 ? 1 : 0.95, pointerEvents: activeStep === 0 ? 'auto' : 'none' }}
-              transition={{ duration: 0.5 }}
+        <div>
+          <h3 className="text-lg font-semibold text-white">
+            {step.title}
+          </h3>
+          <p className="text-sm text-white/60 mt-1 max-w-sm">
+            {step.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
               className="absolute inset-0 p-8 flex flex-col items-center justify-center"
             >
               <div className="relative w-full max-w-sm">
