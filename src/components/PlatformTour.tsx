@@ -217,15 +217,12 @@ export default function PlatformTour() {
 
                   </div>
 
+               
                 </div>
-
-              </div>
+                </div>
             </div>
-
-          </div>
-        </div>
-
-      </div>
+       </div>
+    
     </section>
   );
 }
