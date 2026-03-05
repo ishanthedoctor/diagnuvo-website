@@ -10,7 +10,7 @@ import {
   FileCheck,
   AlertTriangle,
   CheckCircle2,
-  Lock
+  Lock,
 } from "lucide-react";
 
 // A) ICU Risk Prediction
@@ -19,33 +19,41 @@ function ICURiskVisual() {
     <div className="absolute top-6 right-6 w-32 md:w-48 pointer-events-none">
       <div className="flex justify-between text-[10px] text-white/50 mb-1.5 font-mono uppercase tracking-wider">
         <span>Risk</span>
-        <motion.span 
-          animate={{ opacity: [0.7, 1, 0.7] }} 
+        <motion.span
+          animate={{ opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="text-red-400 font-bold"
         >
           72%
         </motion.span>
       </div>
+
       <div className="h-1.5 bg-white/5 rounded-full overflow-hidden relative border border-white/5">
-        <motion.div 
+        <motion.div
           animate={{ width: ["68%", "72%", "70%", "68%"] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-500/80 to-red-500/80"
         />
-        <motion.div 
+        <motion.div
           animate={{ left: ["68%", "72%", "70%", "68%"] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,1)] -ml-1"
+          className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-red-400 -ml-1"
+          style={{ boxShadow: "0 0 8px rgba(248,113,113,1)" }}
         />
       </div>
+
       <div className="mt-3 flex flex-col gap-1">
         {[...Array(2)].map((_, i) => (
           <div key={i} className="h-[1px] w-full bg-white/5 relative overflow-hidden">
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: "200%" }}
-              transition={{ duration: 1.5, delay: i * 0.7, repeat: Infinity, ease: "linear" }}
+              transition={{
+                duration: 1.5,
+                delay: i * 0.7,
+                repeat: Infinity,
+                ease: "linear",
+              }}
               className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"
             />
           </div>
@@ -76,9 +84,7 @@ function AIAssistantVisual() {
             Diagnuvo AI
           </div>
         </div>
-        <h3 className="text-lg font-bold text-white mb-2 tracking-wide">
-          AI Clinical Assistant
-        </h3>
+        <h3 className="text-lg font-bold text-white mb-2 tracking-wide">AI Clinical Assistant</h3>
         <p className="text-sm text-white/50 font-medium leading-relaxed">
           Voice-activated charting and real-time clinical queries.
         </p>
@@ -91,13 +97,36 @@ function AIAssistantVisual() {
           <div className="bg-white/5 border border-cyan-500/30 rounded-lg p-3 text-sm text-white/80 shadow-inner min-h-[44px] flex items-center">
             <AnimatePresence mode="wait">
               {step === 0 ? (
-                <motion.div key="typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex gap-1.5 px-1">
-                  <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1, repeat: Infinity, delay: 0 }} className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
-                  <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1, repeat: Infinity, delay: 0.2 }} className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
-                  <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1, repeat: Infinity, delay: 0.4 }} className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
+                <motion.div
+                  key="typing"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex gap-1.5 px-1"
+                >
+                  <motion.span
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+                    className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
+                  />
+                  <motion.span
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+                    className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
+                  />
+                  <motion.span
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+                    className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
+                  />
                 </motion.div>
               ) : (
-                <motion.div key="msg" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="leading-relaxed">
+                <motion.div
+                  key="msg"
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="leading-relaxed"
+                >
                   Stroke risk high. Suggested actions ready.
                 </motion.div>
               )}
@@ -106,8 +135,12 @@ function AIAssistantVisual() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-2 w-full">
-            {["Call IR", "Initiate Transfer", "Prepare Intubation", "Call Neurology"].map(btn => (
-              <div key={btn} className="flex-1 min-w-[45%] text-[10px] text-center bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 px-2 py-1.5 rounded font-medium tracking-wide hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:shadow-[0_0_8px_rgba(34,211,238,0.2)] transition-all cursor-pointer truncate">
+            {["Call IR", "Initiate Transfer", "Prepare Intubation", "Call Neurology"].map((btn) => (
+              <div
+                key={btn}
+                className="flex-1 min-w-[45%] text-[10px] text-center bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 px-2 py-1.5 rounded font-medium tracking-wide hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all cursor-pointer truncate"
+                style={{ boxShadow: "0 0 0 rgba(0,0,0,0)" }}
+              >
                 {btn}
               </div>
             ))}
@@ -122,31 +155,33 @@ function AIAssistantVisual() {
 function RadiologyVisual() {
   const [frame, setFrame] = useState(0);
   useEffect(() => {
-    const int = setInterval(() => setFrame(f => (f === 0 ? 1 : 0)), 2500);
+    const int = setInterval(() => setFrame((f) => (f === 0 ? 1 : 0)), 2500);
     return () => clearInterval(int);
   }, []);
 
   return (
     <div className="absolute top-5 right-5 flex flex-col items-end gap-3 pointer-events-none">
-      <motion.div 
+      <motion.div
         animate={{ x: [-2, 2, -2] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="text-[9px] text-cyan-400/80 uppercase tracking-widest border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 rounded-full font-semibold shadow-[0_0_8px_rgba(34,211,238,0.2)]"
+        className="text-[9px] text-cyan-400/80 uppercase tracking-widest border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 rounded-full font-semibold"
+        style={{ boxShadow: "0 0 8px rgba(34,211,238,0.2)" }}
       >
         DICOMweb: QIDO/WADO
       </motion.div>
+
       <div className="relative w-16 h-16 bg-black/60 rounded-lg border border-white/10 overflow-hidden flex items-center justify-center shadow-inner">
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={frame}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.5 }}
             transition={{ duration: 1 }}
-            className={`w-10 h-12 rounded-[40%] blur-[1px] ${frame === 0 ? 'bg-white/20' : 'bg-white/10'}`}
+            className={`w-10 h-12 rounded-[40%] blur-[1px] ${frame === 0 ? "bg-white/20" : "bg-white/10"}`}
           />
         </AnimatePresence>
-        <motion.div 
+        <motion.div
           animate={{ opacity: [0, 1, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-3 right-2 w-4 h-4 border border-cyan-400 bg-cyan-400/10 rounded-sm"
@@ -160,13 +195,13 @@ function RadiologyVisual() {
 function ClinicalDecisionVisual() {
   const [expanded, setExpanded] = useState(false);
   useEffect(() => {
-    const int = setInterval(() => setExpanded(e => !e), 5000);
+    const int = setInterval(() => setExpanded((e) => !e), 5000);
     return () => clearInterval(int);
   }, []);
 
   return (
     <div className="absolute top-5 right-5 flex flex-col items-end gap-2 pointer-events-none w-32">
-      <motion.div 
+      <motion.div
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -174,9 +209,11 @@ function ClinicalDecisionVisual() {
       >
         <div className="flex items-center gap-1.5 mb-1.5">
           <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-          <span className="text-[9px] font-bold text-emerald-400 tracking-wide">AHA/ASA — Class I</span>
+          <span className="text-[9px] font-bold text-emerald-400 tracking-wide">
+            AHA/ASA — Class I
+          </span>
         </div>
-        <motion.div 
+        <motion.div
           animate={{ height: expanded ? "auto" : "12px", opacity: expanded ? 1 : 0.5 }}
           className="overflow-hidden text-[8px] text-white/60 leading-tight"
         >
@@ -191,7 +228,7 @@ function ClinicalDecisionVisual() {
 function AirwaySafetyVisual() {
   const [alert, setAlert] = useState(false);
   useEffect(() => {
-    const int = setInterval(() => setAlert(a => !a), 4000);
+    const int = setInterval(() => setAlert((a) => !a), 4000);
     return () => clearInterval(int);
   }, []);
 
@@ -200,18 +237,29 @@ function AirwaySafetyVisual() {
       <div className="bg-white/5 border border-white/10 px-2 py-1 rounded flex items-center gap-1.5">
         <span className="text-[9px] text-white/50 font-mono">Reassess GCS in</span>
         <span className="text-[10px] text-white font-mono font-bold">
-          12<motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}>:</motion.span>34
+          12
+          <motion.span
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          >
+            :
+          </motion.span>
+          34
         </span>
       </div>
+
       <AnimatePresence>
         {alert && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             className="flex flex-col items-end gap-1 mt-1"
           >
-            <div className="flex items-center gap-1.5 bg-red-500/10 border border-red-500/40 px-2 py-0.5 rounded shadow-[0_0_10px_rgba(248,113,113,0.2)]">
+            <div
+              className="flex items-center gap-1.5 bg-red-500/10 border border-red-500/40 px-2 py-0.5 rounded"
+              style={{ boxShadow: "0 0 10px rgba(248,113,113,0.2)" }}
+            >
               <span className="text-[10px] font-bold text-red-400">GCS ≤ 8</span>
             </div>
             <div className="text-[8px] text-red-300 uppercase tracking-widest font-bold animate-pulse">
@@ -229,12 +277,12 @@ function AuditVisual() {
   const events = [
     { text: "CT ordered", time: "14:02" },
     { text: "Stroke alert activated", time: "14:05" },
-    { text: "Neurology called", time: "14:08" }
+    { text: "Neurology called", time: "14:08" },
   ];
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    const int = setInterval(() => setStep(s => (s + 1) % 4), 2000);
+    const int = setInterval(() => setStep((s) => (s + 1) % 4), 2000);
     return () => clearInterval(int);
   }, []);
 
@@ -244,14 +292,17 @@ function AuditVisual() {
         {events.map((ev, i) => (
           <AnimatePresence key={ev.text}>
             {step > i && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center justify-end gap-2 relative"
               >
                 <span className="text-[8px] text-white/30 font-mono">{ev.time}</span>
                 <span className="text-[9px] text-white/70 font-medium">{ev.text}</span>
-                <div className="absolute -right-[15px] w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_5px_rgba(16,185,129,0.5)]" />
+                <div
+                  className="absolute -right-[15px] w-1.5 h-1.5 rounded-full bg-emerald-400"
+                  style={{ boxShadow: "0 0 5px rgba(16,185,129,0.5)" }}
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -265,38 +316,45 @@ function AuditVisual() {
 const protocols = [
   {
     name: "Stroke Pathway",
-    items: ["Thrombolysis", "Thrombectomy Transfer", "Door-to-Needle", "Door-to-Groin"]
+    items: ["Thrombolysis", "Thrombectomy Transfer", "Door-to-Needle", "Door-to-Groin"],
   },
   {
     name: "Trauma Protocol",
-    items: ["Major Trauma Activation", "Massive Transfusion Protocol (MTP)", "FAST/CT Trauma Pathway", "Trauma Theatre Ready"]
+    items: [
+      "Major Trauma Activation",
+      "Massive Transfusion Protocol (MTP)",
+      "FAST/CT Trauma Pathway",
+      "Trauma Theatre Ready",
+    ],
   },
   {
     name: "Cardiac Protocol",
-    items: ["STEMI Activation", "Cath Lab Notify", "Post-ROSC Bundle", "Targeted Temperature Mgmt (TTM)"]
+    items: ["STEMI Activation", "Cath Lab Notify", "Post-ROSC Bundle", "Targeted Temperature Mgmt (TTM)"],
   },
   {
     name: "Sepsis Protocol",
-    items: ["Sepsis Six", "Antibiotics < 1 hour", "Lactate/Fluids Bundle", "Escalate to ICU"]
+    items: ["Sepsis Six", "Antibiotics < 1 hour", "Lactate/Fluids Bundle", "Escalate to ICU"],
   },
   {
     name: "Surgical Escalation",
-    items: ["Surgical Review", "Theatre Booking", "Blood Products", "Transfer Coordination"]
-  }
+    items: ["Surgical Review", "Theatre Booking", "Blood Products", "Transfer Coordination"],
+  },
 ];
 
-const allProtocolItems = protocols.flatMap((p, pIdx) => p.items.map((item, iIdx) => ({
-  id: `${pIdx}-${iIdx}`,
-  text: item,
-  category: p.name,
-})));
+const allProtocolItems = protocols.flatMap((p, pIdx) =>
+  p.items.map((item, iIdx) => ({
+    id: `${pIdx}-${iIdx}`,
+    text: item,
+    category: p.name,
+  }))
+);
 
 function ProtocolCarouselVisual() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const int = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % allProtocolItems.length);
+      setCurrentIndex((prev) => (prev + 1) % allProtocolItems.length);
     }, 2200);
     return () => clearInterval(int);
   }, []);
@@ -319,7 +377,8 @@ function ProtocolCarouselVisual() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 5 }}
           transition={{ duration: 0.3 }}
-          className="text-[9px] font-bold text-cyan-300 tracking-wide uppercase bg-cyan-500/10 border border-cyan-500/30 px-2 py-1 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.2)]"
+          className="text-[9px] font-bold text-cyan-300 tracking-wide uppercase bg-cyan-500/10 border border-cyan-500/30 px-2 py-1 rounded-full"
+          style={{ boxShadow: "0 0 8px rgba(34,211,238,0.2)" }}
         >
           {currentCategory}
         </motion.div>
@@ -333,18 +392,24 @@ function ProtocolCarouselVisual() {
               key={item.id}
               layout
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={{ 
-                opacity: i === 0 ? 0.3 : i === 1 ? 0.6 : 1, 
-                y: 0, 
+              animate={{
+                opacity: i === 0 ? 0.3 : i === 1 ? 0.6 : 1,
+                y: 0,
                 scale: 1,
-                borderColor: i === 2 ? ["rgba(34,211,238,0.8)", "rgba(34,211,238,0.2)"] : ["rgba(34,211,238,0.2)", "rgba(34,211,238,0.2)"],
-                boxShadow: i === 2 ? ["0px 0px 12px rgba(34,211,238,0.4)", "0px 0px 0px rgba(34,211,238,0)"] : ["0px 0px 0px rgba(34,211,238,0)", "0px 0px 0px rgba(34,211,238,0)"]
+                borderColor:
+                  i === 2
+                    ? ["rgba(34,211,238,0.8)", "rgba(34,211,238,0.2)"]
+                    : ["rgba(34,211,238,0.2)", "rgba(34,211,238,0.2)"],
+                boxShadow:
+                  i === 2
+                    ? ["0px 0px 12px rgba(34,211,238,0.4)", "0px 0px 0px rgba(34,211,238,0)"]
+                    : ["0px 0px 0px rgba(34,211,238,0)", "0px 0px 0px rgba(34,211,238,0)"],
               }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ 
+              transition={{
                 duration: 0.5,
                 borderColor: { duration: 0.4, ease: "easeOut" },
-                boxShadow: { duration: 0.4, ease: "easeOut" }
+                boxShadow: { duration: 0.4, ease: "easeOut" },
               }}
               className="text-[9px] px-2.5 py-1.5 rounded-full border bg-[#061225] whitespace-nowrap font-medium tracking-wide text-white/80 shrink-0"
             >
@@ -366,7 +431,12 @@ function RealTimeRiskVisual() {
           <motion.div
             key={i}
             animate={{ height: ["20%", `${Math.random() * 60 + 20}%`, "20%"] }}
-            transition={{ duration: 1 + Math.random(), repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+            transition={{
+              duration: 1 + Math.random(),
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
             className="w-1 bg-red-400/30 rounded-full"
           />
         ))}
@@ -383,7 +453,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
     rowSpan: "row-span-1",
     color: "text-cyan-400",
-    visual: <ClinicalDecisionVisual />
+    visual: <ClinicalDecisionVisual />,
   },
   {
     title: "Various Medical Pathway Intelligence",
@@ -392,7 +462,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-1 lg:col-span-1",
     rowSpan: "row-span-2",
     color: "text-cyan-400",
-    visual: <ProtocolCarouselVisual />
+    visual: <ProtocolCarouselVisual />,
   },
   {
     title: "Airway Safety Engine",
@@ -401,7 +471,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-1 lg:col-span-1",
     rowSpan: "row-span-1",
     color: "text-red-400",
-    visual: <AirwaySafetyVisual />
+    visual: <AirwaySafetyVisual />,
   },
   {
     title: "ICU Risk Prediction",
@@ -410,7 +480,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
     rowSpan: "row-span-1",
     color: "text-red-400",
-    visual: <ICURiskVisual />
+    visual: <ICURiskVisual />,
   },
   {
     title: "AI Clinical Assistant",
@@ -420,7 +490,7 @@ const features = [
     rowSpan: "row-span-2",
     color: "text-cyan-400",
     visual: <AIAssistantVisual />,
-    customLayout: true
+    customLayout: true,
   },
   {
     title: "Radiology Integration",
@@ -429,7 +499,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
     rowSpan: "row-span-1",
     color: "text-cyan-400",
-    visual: <RadiologyVisual />
+    visual: <RadiologyVisual />,
   },
   {
     title: "Audit & Governance",
@@ -438,7 +508,7 @@ const features = [
     colSpan: "col-span-1 md:col-span-1 lg:col-span-1",
     rowSpan: "row-span-1",
     color: "text-emerald-400",
-    visual: <AuditVisual />
+    visual: <AuditVisual />,
   },
   {
     title: "Real-Time Risk Detection",
@@ -447,17 +517,16 @@ const features = [
     colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
     rowSpan: "row-span-1",
     color: "text-red-400",
-    visual: <RealTimeRiskVisual />
+    visual: <RealTimeRiskVisual />,
   },
 ];
 
 export default function FeaturesBento() {
   return (
     <section
-  id="features"
-  className="py-24 md:py-32 bg-gradient-to-b from-[#061225] to-[#040A14] relative overflow-hidden"
->
-     
+      id="features"
+      className="py-24 md:py-32 bg-gradient-to-b from-[#061225] to-[#040A14] relative overflow-hidden"
+    >
       {/* Ambient Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -468,8 +537,8 @@ export default function FeaturesBento() {
             <span className="text-cyan-400">critical moments.</span>
           </h2>
           <p className="text-lg text-white/60 font-medium max-w-2xl">
-            A comprehensive suite of tools designed specifically for the
-            high-stakes environment of the emergency department.
+            A comprehensive suite of tools designed specifically for the high-stakes
+            environment of the emergency department.
           </p>
         </div>
 
@@ -485,20 +554,28 @@ export default function FeaturesBento() {
                 delay: index * 0.15,
                 ease: "easeOut",
               }}
-              className={'group relative overflow-hidden bg-white/0.02 rounded-2xl p-6 shadow-lg shadow-[0_0_0_1px_rgba(255,255,255,0.06)] hover:-translate-y-1 ...'}
+              className={[
+                "group relative overflow-hidden rounded-2xl p-6 shadow-lg hover:-translate-y-1 transition-transform duration-300",
+                "bg-white/[0.02] border border-white/[0.06]",
+                feature.colSpan,
+                feature.rowSpan,
+              ].join(" ")}
             >
               {/* 1) Soft moving scanline overlay */}
-              <motion.div 
+              <motion.div
                 animate={{ top: ["-100%", "200%"] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent via-white/[0.03] to-transparent pointer-events-none z-0"
               />
 
-              {/* 2) Faint cyan edge glow that gently breathes */}
-              <motion.div 
-                animate={{ opacity: [0.15, 0.3, 0.15] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-2xl shadow-[inset_0_0_20px_rgba(34,211,238,0.2)] pointer-events-none z-0 group-hover:shadow-[inset_0_0_30px_rgba(34,211,238,0.4)] transition-shadow duration-300"
+              {/* 2) Faint cyan edge glow (two-layer so hover works without shadow-[...]) */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none z-0 opacity-100"
+                style={{ boxShadow: "inset 0 0 20px rgba(34,211,238,0.2)" }}
+              />
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ boxShadow: "inset 0 0 30px rgba(34,211,238,0.4)" }}
               />
 
               {/* 3) Background grid parallax shift on hover */}
@@ -506,15 +583,11 @@ export default function FeaturesBento() {
 
               {/* Content Rendering */}
               {feature.customLayout ? (
-                <div className="relative z-20 flex flex-col h-full w-full">
-                  {feature.visual}
-                </div>
+                <div className="relative z-20 flex flex-col h-full w-full">{feature.visual}</div>
               ) : (
                 <>
                   {/* Visual Component */}
-                  <div className="z-10">
-                    {feature.visual}
-                  </div>
+                  <div className="z-10">{feature.visual}</div>
 
                   {/* Content */}
                   <div className="relative z-20 mt-auto pt-20">
