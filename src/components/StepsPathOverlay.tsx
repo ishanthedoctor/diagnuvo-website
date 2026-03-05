@@ -11,6 +11,7 @@ export default function StepsPathOverlay({ targetRef }: Props) {
     offset: ["start start", "end end"],
   });
 
+  // scroll 0..1 → draw 0..1
   const p = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
@@ -34,48 +35,38 @@ export default function StepsPathOverlay({ targetRef }: Props) {
         </filter>
       </defs>
 
-      {/* DEBUG: you MUST see this red square. Remove later. */}
-      <rect x="20" y="20" width="60" height="60" fill="red" />
-
-      {/* Start dot */}
-      <circle cx="220" cy="420" r="10" fill="rgba(0,0,0,0.95)" />
+      {/* 🔧 TUNE THESE 2 POINTS to match your dots */}
+      {/* Left dot (start) */}
+      <circle cx="170" cy="430" r="10" fill="rgba(0,0,0,0.95)" />
       <circle
-        cx="220"
-        cy="420"
-        r="20"
+        cx="170"
+        cy="430"
+        r="18"
         fill="none"
-        stroke="rgba(90,231,255,0.8)"
+        stroke="rgba(90,231,255,0.35)"
         strokeWidth="2"
       />
 
-      {/* Base path */}
-      <path
-        d="M220 420 C 420 420, 520 300, 720 320 S 1020 460, 1180 360 S 1340 340, 1400 380"
+      {/* Right dot (end / Step 7) */}
+      <circle cx="1370" cy="365" r="8" fill="rgba(90,231,255,1)" filter="url(#glow)" />
+      <circle
+        cx="1370"
+        cy="365"
+        r="14"
         fill="none"
-        stroke="rgba(255,255,255,0.2)"
-        strokeWidth="4"
+        stroke="rgba(90,231,255,0.55)"
+        strokeWidth="2"
       />
 
-      {/* Glowing progress path */}
+      {/* ✅ Only ONE line (no grey base line) */}
       <motion.path
-        d="M220 420 C 420 420, 520 300, 720 320 S 1020 460, 1180 360 S 1340 340, 1400 380"
+        d="M170 430 C 420 520, 560 300, 820 355 S 1120 470, 1370 365"
         fill="none"
         stroke="rgba(90,231,255,1)"
         strokeWidth="6"
         strokeLinecap="round"
         filter="url(#glow)"
         style={{ pathLength: p }}
-      />
-
-      {/* End dot */}
-      <circle cx="1400" cy="380" r="8" fill="rgba(90,231,255,1)" filter="url(#glow)" />
-      <circle
-        cx="1400"
-        cy="380"
-        r="16"
-        fill="none"
-        stroke="rgba(90,231,255,0.9)"
-        strokeWidth="2"
       />
     </svg>
   );
