@@ -37,7 +37,6 @@ export default function App() {
         <About />
       </main>
 <FooterCTA />
-<PrivacyPolicy />
 </div>
   );
 }
