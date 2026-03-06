@@ -83,8 +83,7 @@ export default function FooterCTA() {
         </div>
 
         {/* Copyright */}
-       <div className="text-sm font-medium text-slate-gray flex flex-wrap items-center gap-2">
-
+<div className="text-sm font-medium text-slate-gray flex flex-wrap items-center gap-2">
   <span>
     &copy; {new Date().getFullYear()} Diagnuvo Health. All rights reserved.
   </span>
@@ -102,5 +101,4 @@ export default function FooterCTA() {
       Dr. Ishanjit Singh Sandhu
     </a>
   </span>
-
 </div>
