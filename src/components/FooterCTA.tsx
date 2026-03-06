@@ -47,6 +47,7 @@ export default function FooterCTA() {
               className="group-hover:translate-x-1 transition-transform"
             />
           </button>
+
           <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-bright-white border border-slate-gray/50 rounded-xl font-bold text-base hover:bg-slate-gray/10 transition-all flex items-center justify-center gap-2">
             Contact Sales
           </button>
@@ -55,6 +56,8 @@ export default function FooterCTA() {
 
       {/* Footer Bottom */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 border-t border-slate-gray/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-medical-blue to-medical-blue-light text-bright-white shadow-sm">
             <ShieldPlus size={18} strokeWidth={2} />
@@ -64,21 +67,24 @@ export default function FooterCTA() {
           </span>
         </div>
 
+        {/* Legal Links */}
         <div className="flex items-center gap-6 text-sm font-medium text-slate-gray">
-          <a href="#" className="hover:text-bright-white transition-colors">
+          <a href="/privacy" className="hover:text-bright-white transition-colors">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-bright-white transition-colors">
+
+          <a href="/terms" className="hover:text-bright-white transition-colors">
             Terms of Service
           </a>
-          <a href="#" className="hover:text-bright-white transition-colors">
+
+          <a href="/security" className="hover:text-bright-white transition-colors">
             Security
           </a>
         </div>
 
+        {/* Copyright */}
         <div className="text-sm font-medium text-slate-gray">
-          &copy; {new Date().getFullYear()} Diagnuvo Health, Inc. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} Diagnuvo Health, Inc. All rights reserved.
         </div>
       </div>
     </footer>
