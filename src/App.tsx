@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PlatformTour from './components/PlatformTour';
 import PlatformPipeline from './components/PlatformPipeline';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Problem from './components/Problem';
 import Solution from './components/Solution';
 import WorkflowStory from './components/WorkflowStory';
@@ -35,7 +36,8 @@ export default function App() {
         <TrustSecurity />
         <About />
       </main>
-      <FooterCTA />
-    </div>
+<FooterCTA />
+<PrivacyPolicy />
+</div>
   );
 }
