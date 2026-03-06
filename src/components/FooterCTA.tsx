@@ -91,14 +91,14 @@ export default function FooterCTA() {
   <span className="opacity-60">•</span>
 
   <span className="opacity-70">
-    Website developed by{" "}
-    <a
-      href="https://www.linkedin.com/in/dr-ishanjit-singh-sandhu-md-7950aa53"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-slate-400 hover:text-white transition-colors underline underline-offset-4"
-    >
-      Dr. Ishanjit Singh Sandhu
-    </a>
-  </span>
+  Website developed by{" "}
+  <a
+    href="https://www.linkedin.com/in/dr-ishanjit-singh-sandhu-md-7950aa53"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-slate-400 hover:text-white transition-colors underline underline-offset-4"
+  >
+    Dr. Ishanjit Singh Sandhu
+  </a>
+</span>
 </div>
