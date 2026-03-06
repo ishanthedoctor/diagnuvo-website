@@ -61,11 +61,11 @@ export default function FooterCTA() {
             </a>
 
             <a
-              href="/terms"
-              className="hover:text-bright-white transition-colors"
-            >
-              Terms of Service
-            </a>
+  href="/terms"
+  className="text-gray-400 hover:text-white transition whitespace-nowrap"
+>
+  Terms of Service
+</a>
 
             <a
               href="/security"
