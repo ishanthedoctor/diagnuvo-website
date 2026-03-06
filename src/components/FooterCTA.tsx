@@ -83,7 +83,8 @@ export default function FooterCTA() {
         </div>
 
         {/* Copyright */}
-        <div className="text-sm font-medium text-slate-gray flex flex-wrap items-center gap-2">
+       <div className="text-sm font-medium text-slate-gray flex flex-wrap items-center gap-2">
+
   <span>
     &copy; {new Date().getFullYear()} Diagnuvo Health. All rights reserved.
   </span>
@@ -91,14 +92,15 @@ export default function FooterCTA() {
   <span className="opacity-60">•</span>
 
   <span className="opacity-70">
-  Website developed by{" "}
-  <a
-    href="https://www.linkedin.com/in/dr-ishanjit-singh-sandhu-md-7950aa53"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-slate-400 hover:text-white transition-colors underline underline-offset-4"
-  >
-    Dr. Ishanjit Singh Sandhu
-  </a>
-</span>
+    Website developed by
+    <a
+      href="https://www.linkedin.com/in/dr-ishanjit-singh-sandhu-md-7950aa53"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="ml-1 text-slate-400 hover:text-white transition-colors underline underline-offset-4"
+    >
+      Dr. Ishanjit Singh Sandhu
+    </a>
+  </span>
+
 </div>
